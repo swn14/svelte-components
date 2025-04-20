@@ -5,6 +5,8 @@
 	export let slides: ISlide[] = [];
 	export let autoplay = true;
 	export let interval = 10000;
+	export let primaryColor = '36, 50, 84';
+	export let indicatorSizeInRem = '1';
 
 	let currentSlideId = 1;
 	let timer: number;
@@ -53,7 +55,10 @@
 	onDestroy(() => clearInterval(timer));
 </script>
 
-<div class="container">
+<div
+	class="container"
+	style="--primary: {primaryColor}; --indicator-size: {indicatorSizeInRem}rem;"
+>
 	{#if currentSlide}
 		<h2 class="caption">{currentSlide.caption}</h2>
 	{/if}
@@ -92,17 +97,15 @@
 </div>
 
 <style>
-	* {
-		box-sizing: border-box;
-	}
 	.container {
 		display: grid;
 		place-items: center;
 		place-content: center;
+		margin: -8px;
 	}
 	.container > * {
 		grid-area: container;
-		max-width: 1000px;
+		max-width: 1500px;
 	}
 
 	.carousel-item {
@@ -122,22 +125,23 @@
 	}
 
 	.indicator {
-		--size: 1rem;
 		padding: 0;
 		font-size: 0;
 		color: transparent;
 		border: 3px solid white;
 		background-color: white;
 		border-radius: 50%;
-		width: var(--size);
-		height: var(--size);
+		width: var(--indicator-size);
+		height: var(--indicator-size);
+		cursor: pointer;
 	}
 
 	.indicator.active {
-		background-color: rgba(0, 0, 0, 1);
+		background-color: rgba(var(--primary), 1);
 	}
 
 	.slide > img {
+		aspect-ratio: 16 / 9;
 		object-fit: cover;
 		width: 100%;
 		height: 100%;
@@ -148,6 +152,19 @@
 		margin-left: 10px;
 		place-self: end start;
 		z-index: 1;
+		color: rgba(var(--primary));
+	}
+
+	.control-btn {
+		font-size: 2.5em;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		color: rgba(var(--primary), 1);
+	}
+
+	.control-btn:hover {
+		color: rgba(var(--primary), 0.5);
 	}
 
 	.control-btn.previous {

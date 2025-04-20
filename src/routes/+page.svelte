@@ -4,23 +4,24 @@
 	const carouselItems: ISlide[] = [
 		{
 			slideId: 1,
-			image: 'https://placehold.co/800x300?text=Slide+1',
+			image: 'https://placehold.co/5000x500?text=Slide+1',
 			alt: 'Slide 1',
 			caption: 'First Slide'
 		},
 		{
 			slideId: 2,
-			image: 'https://placehold.co/800x300?text=Slide+2',
+			image: 'https://placehold.co/5000x500?text=Slide+2',
 			alt: 'Slide 2',
 			caption: 'Second Slide'
 		},
 		{
 			slideId: 3,
-			image: 'https://placehold.co/800x300?text=Slide+3',
+			image: 'https://placehold.co/5000x500?text=Slide+3',
 			alt: 'Slide 3',
 			caption: 'Third Slide'
 		}
 	];
 </script>
 
+<h1>Image Carousel</h1>
 <Carousel slides={carouselItems} />
